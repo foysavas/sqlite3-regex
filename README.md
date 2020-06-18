@@ -41,12 +41,18 @@ SELECT REGEXP_REPLACE('1/1/1985', '([0-9]+)/([0-9]+)/([0-9]+)', '\3-\1-\2');
 
 Replacement strings also include support for [grouping and conditionals](https://www.boost.org/doc/libs/1_53_0/libs/regex/doc/html/boost_regex/format/boost_format_syntax.html) and literal parenthesis must be escaped.
 ```
-SELECT REGEXP_REPLACE('1/1/1985', '([0-9])?([0-9])/([0-9])?([0-9])/([0-9]*)', '\(\5-(?{3}\3:0)\4-(?{1}\1:0)\2\)');
+SELECT REGEXP_REPLACE('1/1/1985', '([0-9])?([0-9])/([0-9])?([0-9])/([0-9]*)', '\(\5-(?{1}\1:0)\2-(?{3}\3:0)\4\)');
 
 (1985-01-01)
 ```
 
+## Installation
 
+Requires boost.
+
+Run `make` then load in sqlite via `.load 'path/to/dist/sqlite3-regexp.so'`
+
+Run `make add_to_rc` to add the compiled extension to your `~/.sqliterc` file and be preloaded whenever you start sqlite.
 
 ## Credit
 
