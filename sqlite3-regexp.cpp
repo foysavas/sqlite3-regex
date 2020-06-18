@@ -89,9 +89,9 @@ extern "C" {
     SQLITE_EXTENSION_INIT2(api)
 
     // Regular Expressions
-    sqlite3_create_function(db, "regex_match",  2, SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, regex_match, NULL, NULL);
-    sqlite3_create_function(db, "regex_search",  2, SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, regex_search, NULL, NULL);
-    sqlite3_create_function(db, "regex_replace",  3, SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, regex_replace, NULL, NULL);
+    sqlite3_create_function(db, "regexp_match",  2, SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, regex_match, NULL, NULL);
+    sqlite3_create_function(db, "regexp_search",  2, SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, regex_search, NULL, NULL);
+    sqlite3_create_function(db, "regexp_replace",  3, SQLITE_UTF8 | SQLITE_DETERMINISTIC, NULL, regex_replace, NULL, NULL);
     return 0;
   }
 }
