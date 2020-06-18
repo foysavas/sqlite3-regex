@@ -77,7 +77,7 @@ extern "C" {
     // Catch all for regex errors and API cleanliness
     try {
       boost::regex regex(re);
-      std::string replaced = boost::regex_replace(std::string(subject), regex, format);
+      std::string replaced = boost::regex_replace(std::string(subject), regex, format, boost::regex_constants::format_all);
       sqlite3_result_text(ctx, replaced.data(), -1, SQLITE_TRANSIENT);
     } catch (const boost::regex_error& e) {
       sqlite3_result_error(ctx, e.what(), -1);
